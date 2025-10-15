@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Análise Digital e Proposta: Liturgia Diária com Pe. Fernando - Santuário Nossa Senhora de Fátima BH">
+    <meta name="author" content="Roberth Naninne de Souza">
+    <title>Análise e Proposta - Liturgia Diária com Pe. Fernando</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables - Paleta do Santuário Nossa Senhora de Fátima */
+        :root {
+            --azul-mariano: #1463a5;
+            --azul-mariano-claro: #9dbed9;
+            --dourado-sagrado: #D4AF37;
+            --branco-puro: #F8FAFC;
+            --azul-fatima: #2563EB;
+            --dourado-claro: #F6E05E;
+            --cinza-escuro: #1F2937;
+            --verde-esperanca: #059669;
+            --gradiente-mariano: linear-gradient(135deg, #1463a5 0%, #9dbed9 100%);
+            --gradiente-sagrado: linear-gradient(135deg, #1463a5 0%, #D4AF37 100%);
+            --gradiente-dourado: linear-gradient(135deg, #D4AF37 0%, #F6E05E 100%);
+            
+            /* Typography */
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --font-data: 'Roboto Mono', monospace;
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-xxl: 4rem;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+            --shadow-xl: 0 20px 50px rgba(0,0,0,0.15);
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        /* Reset e Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--cinza-escuro);
+            background: var(--branco-puro);
+            overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            /* Otimizações para mobile */
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-title);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 700;
+        }
+        
+        h4 {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: var(--spacing-sm);
+            font-size: clamp(1rem, 2vw, 1.125rem);
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #9dbed9 0%, transparent 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        
+        /* Section Base */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-xxl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-content {
+            width: 100%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .section-content.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(248, 250, 252, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(20, 99, 165, 0.1);
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+            transition: var(--transition-normal);
+        }
+        
+        .navbar.scrolled {
+            background: rgba(248, 250, 252, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--azul-mariano);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--cinza-escuro);
+            font-weight: 500;
+            transition: var(--transition-fast);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--azul-mariano);
+            background: rgba(20, 99, 165, 0.1);
+        }
+        
+        /* Hero Section - SLIDE 1: CAPA */
+        .hero {
+            background: var(--gradiente-mariano);
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cross" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 2v16M2 10h16" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23cross)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: var(--spacing-md);
+            animation: pulse 2s infinite;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(45deg, white, #9dbed9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-description {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            background: var(--dourado-sagrado);
+            color: white;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border: none;
+            border-radius: var(--radius-lg);
+            font-family: var(--font-title);
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            box-shadow: var(--shadow-lg);
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+            background: var(--dourado-claro);
+        }
+        
+        /* Análise Digital Section */
+        .analysis {
+            background: white;
+        }
+        
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .metric-card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+            border-left: 4px solid var(--azul-mariano);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, transparent, rgba(20, 99, 165, 0.05));
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .metric-icon {
+            font-size: 2.5rem;
+            color: var(--azul-mariano);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .metric-number {
+            font-family: var(--font-data);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--azul-mariano);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--cinza-escuro);
+            opacity: 0.8;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .metric-insight {
+            font-size: 0.85rem;
+            color: var(--verde-esperanca);
+            font-weight: 600;
+        }
+        
+        /* Oportunidades Section */
+        .opportunities {
+            background: #f1f7fc;
+        }
+        
+        .opportunities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .opportunity-card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+        }
+        
+        .opportunity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .opportunity-icon {
+            font-size: 2rem;
+            color: var(--dourado-sagrado);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .opportunity-title {
+            color: var(--azul-mariano);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .opportunity-list {
+            list-style: none;
+            margin-top: var(--spacing-sm);
+        }
+        
+        .opportunity-list li {
+            padding: var(--spacing-xs) 0;
+            color: var(--cinza-escuro);
+            position: relative;
+            padding-left: var(--spacing-md);
+        }
+        
+        .opportunity-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--verde-esperanca);
+            font-weight: bold;
+        }
+        
+        /* Proposta Section */
+        .proposal {
+            background: var(--gradiente-sagrado);
+            color: white;
+        }
+        
+        .proposal-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .proposal-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition-normal);
+        }
+        
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+            color: #9dbed9;
+        }
+        
+        /* Benchmark Section */
+        .benchmark {
+            background: white;
+        }
+        
+        .benchmark-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        
+        .benchmark-table th,
+        .benchmark-table td {
+            padding: var(--spacing-sm);
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .benchmark-table th {
+            background: var(--azul-mariano);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .benchmark-table tr:hover {
+            background: #f1f7fc;
+        }
+        
+        /* CORREÇÃO CRÍTICA - Responsividade da tabela benchmark */
+        .benchmark-table {
+            font-size: 0.9rem;
+            overflow-x: auto;
+            display: block;
+            white-space: nowrap;
+        }
+        
+        .benchmark-table thead,
+        .benchmark-table tbody,
+        .benchmark-table tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        
+        .benchmark-table th,
+        .benchmark-table td {
+            white-space: normal;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+        
+        /* Implementação Section */
+        .implementation {
+            background: #f1f7fc;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: var(--spacing-xl);
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--azul-mariano);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-step {
+            position: relative;
+            margin-bottom: var(--spacing-xl);
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .step-content {
+            flex: 1;
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin: 0 var(--spacing-lg);
+            transition: var(--transition-normal);
+        }
+        
+        .step-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--azul-mariano);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .step-title {
+            color: var(--azul-mariano);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.2rem;
+        }
+        
+        /* Métricas Section */
+        .metrics {
+            background: var(--gradiente-dourado);
+            color: white;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .metric-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: var(--transition-normal);
+        }
+        
+        .metric-box:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+        
+        .metric-value {
+            font-family: var(--font-data);
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .metric-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        /* RESPONSIVIDADE COMPLETA PARA DISPOSITIVOS MÓVEIS */
+        
+        /* TABLETS - 768px a 1024px */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+                padding: 0 1rem;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            h1 {
+                font-size: clamp(2rem, 4vw, 3rem);
+            }
+            
+            h2 {
+                font-size: clamp(1.5rem, 3vw, 2.25rem);
+            }
+        }
+        
+        /* CELULARES - até 768px */
+        @media (max-width: 768px) {
+            /* RESET BÁSICO PARA MOBILE */
+            .nav-menu {
+                display: none;
+            }
+            
+            .container {
+                max-width: 95%;
+                padding: 0 0.75rem;
+            }
+            
+            /* HERO SECTION OTIMIZADA */
+            .hero {
+                padding: 2rem 1rem;
+                min-height: auto;
+            }
+            
+            .hero h1 {
+                font-size: clamp(1.75rem, 6vw, 2.5rem);
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: clamp(1.1rem, 4vw, 1.4rem);
+                margin-bottom: 1.5rem;
+            }
+            
+            /* SEÇÕES GERAIS */
+            .section {
+                padding: 2rem 0;
+            }
+            
+            .section-content {
+                padding: 1.5rem;
+            }
+            
+            /* TIPOGRAFIA MOBILE */
+            h1 {
+                font-size: clamp(1.75rem, 6vw, 2.5rem);
+            }
+            
+            h2 {
+                font-size: clamp(1.5rem, 5vw, 2rem);
+            }
+            
+            h3 {
+                font-size: clamp(1.25rem, 4vw, 1.75rem);
+            }
+            
+            h4 {
+                font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+            }
+            
+            p, li {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            
+            /* MÉTRICAS MOBILE-FIRST */
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .metric-box {
+                padding: 1.5rem 1rem;
+                text-align: center;
+            }
+            
+            .metric-value {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .metric-desc {
+                font-size: 0.95rem;
+            }
+            
+            /* OVERRIDE DE GRIDS INLINE PARA MOBILE */
+            div[style*="grid-template-columns"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+            
+            div[style*="grid-template-columns"] > * {
+                width: 100% !important;
+                margin-bottom: 1rem;
+            }
+            
+            .chart-container {
+                margin-bottom: 2rem;
+                padding: 1.5rem 1rem;
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            
+            .chart-container h4 {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            
+            /* PROGRESS BARS MOBILE */
+            .progress-bar {
+                height: 24px;
+                border-radius: 12px;
+                margin: 1rem 0;
+            }
+            
+            /* LISTAS MOBILE */
+            .chart-container ul {
+                padding-left: 0;
+            }
+            
+            .chart-container ul li {
+                margin-bottom: 0.75rem;
+                padding: 0.5rem;
+                background: rgba(20, 99, 165, 0.05);
+                border-radius: 8px;
+                font-size: 0.95rem;
+            }
+            
+            /* TIMELINE MOBILE */
+            .timeline-line {
+                left: 20px;
+            }
+            
+            .timeline-step {
+                flex-direction: row !important;
+                margin-bottom: 2rem;
+            }
+            
+            .timeline-step:nth-child(even) {
+                flex-direction: row !important;
+            }
+            
+            .step-number {
+                left: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .step-content {
+                margin-left: 70px;
+                margin-right: 0;
+                padding: 1rem;
+            }
+            
+            /* BOTÕES E INTERAÇÃO MOBILE */
+            .cta-button {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1.1rem;
+                margin: 1rem 0;
+            }
+            
+            /* NAVEGAÇÃO MOBILE MELHORADA */
+            .nav {
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav .logo {
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            
+            /* SEÇÕES COM GRADIENTE OTIMIZADAS */
+            .section.metrics,
+            .section[style*="gradiente"] {
+                padding: 2rem 1rem;
+            }
+            
+            /* TEXTOS DE DESTAQUE MOBILE */
+            .section-content p {
+                font-size: 1rem;
+                line-height: 1.7;
+                margin-bottom: 1rem;
+            }
+            
+            /* CARDS E BOXES MOBILE */
+            .feature-box,
+            .metric-box,
+            .step-content {
+                border-radius: 12px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            
+            /* ESPAÇAMENTO OTIMIZADO */
+            .section + .section {
+                margin-top: 0;
+            }
+            
+            /* IMAGENS E ÍCONES RESPONSIVOS */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .icon {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            /* CORREÇÃO ESPECÍFICA PARA TABELA BENCHMARK MOBILE */
+            .benchmark-table {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                white-space: nowrap;
+                font-size: 0.8rem;
+                border-radius: 8px;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .benchmark-table::-webkit-scrollbar {
+                height: 8px;
+            }
+            
+            .benchmark-table::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 4px;
+            }
+            
+            .benchmark-table::-webkit-scrollbar-thumb {
+                background: var(--azul-mariano);
+                border-radius: 4px;
+            }
+            
+            /* LAYOUT DE CARDS PARA TABELAS EM MOBILE */
+            .benchmark-table thead {
+                display: none;
+            }
+            
+            .benchmark-table,
+            .benchmark-table tbody,
+            .benchmark-table tr,
+            .benchmark-table td {
+                display: block;
+                width: 100%;
+            }
+            
+            .benchmark-table tr {
+                background: white;
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                margin-bottom: 1rem;
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .benchmark-table td {
+                border: none;
+                padding: 0.5rem 0;
+                position: relative;
+                white-space: normal;
+                word-wrap: break-word;
+            }
+            
+            .benchmark-table td:before {
+                content: attr(data-label) ": ";
+                font-weight: 700;
+                color: var(--azul-mariano);
+                display: inline-block;
+                width: 100px;
+                margin-right: 0.5rem;
+            }
+            
+            /* CORREÇÃO DEFINITIVA PARA TÍTULOS E TEXTOS */
+            
+            /* Container geral otimizado */
+            .container {
+                max-width: 100%;
+                padding: 0 0.75rem;
+                margin: 0 auto;
+            }
+            
+            /* Seções com padding adequado */
+            .section-content {
+                padding: 1rem 0.5rem;
+            }
+            
+            /* Títulos completamente responsivos */
+            h1, h2, h3, h4, h5, h6 {
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                hyphens: auto !important;
+                white-space: normal !important;
+                max-width: 100% !important;
+            }
+            
+            section h2 {
+                font-size: clamp(1.1rem, 5vw, 1.5rem) !important;
+                line-height: 1.3 !important;
+                text-align: center !important;
+                padding: 0 0.5rem !important;
+                margin: 0.5rem 0 1rem 0 !important;
+                word-break: break-word !important;
+            }
+            
+            section p {
+                font-size: clamp(0.85rem, 3.5vw, 1rem) !important;
+                line-height: 1.5 !important;
+                text-align: center !important;
+                padding: 0 0.75rem !important;
+                margin-bottom: 1.5rem !important;
+                word-break: break-word !important;
+            }
+            
+            /* Textos center com quebra */
+            .text-center {
+                text-align: center !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+            }
+            
+            /* Fix específico para o título benchmark */
+            #benchmark h2 {
+                font-size: clamp(1rem, 4.5vw, 1.4rem) !important;
+                line-height: 1.2 !important;
+                padding: 0 0.25rem !important;
+                word-spacing: -2px !important;
+            }
+            
+            #benchmark p {
+                font-size: clamp(0.8rem, 3vw, 0.95rem) !important;
+                padding: 0 0.5rem !important;
+            }
+            
+            /* CORREÇÃO GLOBAL PARA OVERFLOW */
+            * {
+                max-width: 100%;
+                box-sizing: border-box;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            /* Prevent horizontal overflow */
+            body, html {
+                overflow-x: hidden;
+                width: 100%;
+            }
+            
+            /* Ensure all sections stay within viewport */
+            .section {
+                width: 100%;
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+            
+            /* Status badges mobile */
+            .status-badge {
+                font-size: 0.7rem !important;
+                padding: 0.25rem 0.5rem !important;
+                white-space: nowrap;
+                display: inline-block;
+                margin-top: 0.25rem;
+            }
+        }
+        
+        /* CELULARES PEQUENOS - até 480px */
+        @media (max-width: 480px) {
+            .container {
+                max-width: 98%;
+                padding: 0 0.5rem;
+            }
+            
+            .hero {
+                padding: 1.5rem 0.75rem;
+            }
+            
+            .hero h1 {
+                font-size: clamp(1.5rem, 7vw, 2rem);
+            }
+            
+            .hero h2 {
+                font-size: clamp(1rem, 4vw, 1.25rem);
+            }
+            
+            .section {
+                padding: 1.5rem 0;
+            }
+            
+            .section-content {
+                padding: 1rem;
+            }
+            
+            h2 {
+                font-size: clamp(1.25rem, 5vw, 1.75rem);
+            }
+            
+            h4 {
+                font-size: clamp(1rem, 4vw, 1.25rem);
+            }
+            
+            .metric-value {
+                font-size: 2rem;
+            }
+            
+            .chart-container {
+                padding: 1rem 0.75rem;
+            }
+            
+            .chart-container ul li {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+            
+            .timeline-step {
+                margin-bottom: 1.5rem;
+            }
+            
+            .step-content {
+                margin-left: 60px;
+                padding: 0.75rem;
+            }
+            
+            /* OTIMIZAÇÕES ESPECÍFICAS PARA A SEÇÃO MÉTRICAS */
+            section.metrics .metrics-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem;
+            }
+            
+            section.metrics .chart-container {
+                margin: 1rem 0;
+                padding: 1rem;
+            }
+            
+            section.metrics .chart-container h4 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+            
+            section.metrics .progress-bar {
+                height: 20px;
+                margin: 0.75rem 0;
+            }
+            
+            section.metrics ul li {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+        }
+        
+        /* OTIMIZAÇÃO PARA TOUCH E PERFORMANCE */
+        @media (hover: none) and (pointer: coarse) {
+            /* Dispositivos touch apenas */
+            * {
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            .cta-button,
+            button {
+                min-height: 48px;
+                touch-action: manipulation;
+            }
+            
+            .chart-container {
+                touch-action: pan-y;
+            }
+        }
+        
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mb-0 { margin-bottom: 0; }
+        .mb-2 { margin-bottom: var(--spacing-sm); }
+        .mb-4 { margin-bottom: var(--spacing-lg); }
+        
+        /* Charts and Data Visualization */
+        .chart-container {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin: var(--spacing-lg) 0;
+        }
+        
+        /* CORREÇÃO ROBUSTA DE CONTRASTE - Garantir visibilidade máxima de todos os textos */
+        
+        /* Elementos com fundo branco ou claro - texto sempre escuro e visível */
+        .chart-container,
+        .chart-container *,
+        [style*="background: white"],
+        [style*="background: #fff"],
+        [style*="background: #ffffff"],
+        [style*="background-color: white"],
+        [style*="background-color: #fff"],
+        [style*="background-color: #ffffff"] {
+            color: var(--cinza-escuro) !important;
+        }
+        
+        /* Títulos e elementos importantes - sempre visíveis */
+        .chart-container h1,
+        .chart-container h2,
+        .chart-container h3,
+        .chart-container h4,
+        .chart-container h5,
+        .chart-container h6 {
+            color: var(--azul-mariano) !important;
+            font-weight: 700 !important;
+        }
+        
+        /* Textos fortes e importantes */
+        .chart-container strong,
+        .chart-container b,
+        .chart-container .metric-value {
+            color: var(--azul-mariano) !important;
+            font-weight: 700 !important;
+        }
+        
+        /* Textos descritivos */
+        .chart-container p,
+        .chart-container span,
+        .chart-container div:not(.chart-container) {
+            color: var(--cinza-escuro) !important;
+        }
+        
+        /* Correção específica para elementos dentro de .metrics com fundo claro */
+        .metrics .chart-container,
+        .metrics .chart-container * {
+            color: var(--cinza-escuro) !important;
+        }
+        
+        .metrics .chart-container h1,
+        .metrics .chart-container h2,
+        .metrics .chart-container h3,
+        .metrics .chart-container h4,
+        .metrics .chart-container h5,
+        .metrics .chart-container h6,
+        .metrics .chart-container strong,
+        .metrics .chart-container b {
+            color: var(--azul-mariano) !important;
+        }
+        
+        /* REGRA UNIVERSAL - Qualquer elemento com fundo branco/claro SEMPRE terá texto escuro */
+        *[style*="background: white"],
+        *[style*="background:#fff"],
+        *[style*="background: #fff"],
+        *[style*="background:#ffffff"],
+        *[style*="background: #ffffff"],
+        *[style*="background-color: white"],
+        *[style*="background-color:#fff"],
+        *[style*="background-color: #fff"],
+        *[style*="background-color:#ffffff"],
+        *[style*="background-color: #ffffff"] {
+            color: var(--cinza-escuro) !important;
+        }
+        
+        /* Títulos dentro de qualquer elemento com fundo branco */
+        *[style*="background: white"] h1,
+        *[style*="background: white"] h2,
+        *[style*="background: white"] h3,
+        *[style*="background: white"] h4,
+        *[style*="background: white"] h5,
+        *[style*="background: white"] h6,
+        *[style*="background: white"] strong,
+        *[style*="background: white"] b,
+        *[style*="background:#fff"] h1,
+        *[style*="background:#fff"] h2,
+        *[style*="background:#fff"] h3,
+        *[style*="background:#fff"] h4,
+        *[style*="background:#fff"] h5,
+        *[style*="background:#fff"] h6,
+        *[style*="background:#fff"] strong,
+        *[style*="background:#fff"] b {
+            color: var(--azul-mariano) !important;
+            font-weight: 700 !important;
+        }
+        
+        /* ÚLTIMA LINHA DE DEFESA - Force todas as sections de métricas */
+        .metrics * {
+            text-shadow: none !important;
+        }
+        
+        .metrics .chart-container * {
+            color: var(--cinza-escuro) !important;
+            background-color: transparent !important;
+        }
+        
+        .metrics .chart-container h1,
+        .metrics .chart-container h2, 
+        .metrics .chart-container h3,
+        .metrics .chart-container h4,
+        .metrics .chart-container h5,
+        .metrics .chart-container h6,
+        .metrics .chart-container strong,
+        .metrics .chart-container b {
+            color: var(--azul-mariano) !important;
+            font-weight: 700 !important;
+            text-shadow: none !important;
+        }
+        
+        /* CORREÇÃO DEFINITIVA E ESPECÍFICA - Usando valores hexadecimais diretos para máxima compatibilidade */
+        section.metrics .chart-container,
+        section.metrics .chart-container *,
+        section#metricas .chart-container,
+        section#metricas .chart-container * {
+            color: #1F2937 !important;
+            background-color: transparent !important;
+        }
+        
+        section.metrics .chart-container h1,
+        section.metrics .chart-container h2,
+        section.metrics .chart-container h3,
+        section.metrics .chart-container h4,
+        section.metrics .chart-container h5,
+        section.metrics .chart-container h6,
+        section#metricas .chart-container h1,
+        section#metricas .chart-container h2,
+        section#metricas .chart-container h3,
+        section#metricas .chart-container h4,
+        section#metricas .chart-container h5,
+        section#metricas .chart-container h6 {
+            color: #1463a5 !important;
+            font-weight: 700 !important;
+            font-size: 1.25rem !important;
+        }
+        
+        section.metrics .chart-container strong,
+        section.metrics .chart-container b,
+        section#metricas .chart-container strong,
+        section#metricas .chart-container b {
+            color: #1463a5 !important;
+            font-weight: 700 !important;
+        }
+        
+        section.metrics .chart-container small,
+        section#metricas .chart-container small {
+            color: #374151 !important;
+            font-size: 0.875rem !important;
+        }
+        
+        section.metrics .chart-container ul li,
+        section#metricas .chart-container ul li {
+            color: #1F2937 !important;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: var(--spacing-xs) 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--azul-mariano);
+            border-radius: 10px;
+            transition: width 2s ease;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 2px;
+        }
+        
+        .status-excellent {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+        
+        .status-good {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+        
+        .status-needs-improvement {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#home" class="logo">⛪ Santuário Nossa Senhora de Fátima</a>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Início</a></li>
+                    <li><a href="#analise" class="nav-link">Análise Digital</a></li>
+                    <li><a href="#oportunidades" class="nav-link">Oportunidades</a></li>
+                    <li><a href="#proposta" class="nav-link">Proposta</a></li>
+                    <li><a href="#benchmark" class="nav-link">Benchmark</a></li>
+                    <li><a href="#implementacao" class="nav-link">Implementação</a></li>
+                    <li><a href="#metricas" class="nav-link">Métricas</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SLIDE 1: CAPA -->
+    <section id="home" class="section hero">
+        <div class="container">
+            <div class="section-content">
+                <div class="hero-content">
+                    <div class="hero-icon">🙏</div>
+                    <h1 class="hero-title">ANÁLISE DIGITAL E PROPOSTA</h1>
+                    <h2 class="hero-subtitle">"Liturgia Diária com Pe. Fernando"</h2>
+                    <p class="hero-description">
+                        Santuário Arquidiocesano Nossa Senhora de Fátima<br>
+                        <strong>Proposta de Roberth Naninne de Souza (PASCOM)</strong><br>
+                        <strong>Para Pe. Fernando Lopes</strong><br>
+                        Baseada na experiência da Novena de Nossa Senhora Aparecida<br>
+                        Outubro 2025
+                    </p>
+                    <a href="#analise" class="cta-button">
+                        <span>Ver Análise</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: ANÁLISE DIGITAL ATUAL -->
+    <section id="analise" class="section analysis">
+        <div class="container">
+            <div class="section-content">
+                <div class="text-center mb-4">
+                    <h2>📊 DIAGNÓSTICO DIGITAL ATUAL</h2>
+                    <h3>Instagram @santuariofatimabh</h3>
+                    <p>Análise baseada na nossa experiência com a Novena de Nossa Senhora Aparecida e dados coletados em outubro/2025</p>
+                </div>
+                
+                <div class="analysis-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon">👥</div>
+                        <div class="metric-number">11.000</div>
+                        <div class="metric-label">Seguidores no Instagram</div>
+                        <div class="metric-insight">Base sólida para crescimento orgânico</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon">📝</div>
+                        <div class="metric-number">2.137</div>
+                        <div class="metric-label">Posts Publicados</div>
+                        <div class="metric-insight">Histórico consistente de conteúdo</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon">⛪</div>
+                        <div class="metric-number">53</div>
+                        <div class="metric-label">Perfis Seguidos</div>
+                        <div class="metric-insight">Estratégia focada e curada</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon">🎯</div>
+                        <div class="metric-number">4,86%</div>
+                        <div class="metric-label">Taxa de Engajamento Estimada</div>
+                        <div class="metric-insight">Acima da média de perfis religiosos</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon">📺</div>
+                        <div class="metric-number">Ativo</div>
+                        <div class="metric-label">Canal YouTube</div>
+                        <div class="metric-insight">Ecossistema digital estabelecido</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon">🌐</div>
+                        <div class="metric-number">Completo</div>
+                        <div class="metric-label">Site Oficial</div>
+                        <div class="metric-insight">Presença digital consolidada</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h4>🎯 Perfil da Audiência Identificada na Novena de Nossa Senhora Aparecida</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div>
+                            <strong>Fiéis Locais (40%)</strong>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <strong>Devotos Marianos (35%)</strong>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 35%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <strong>Católicos BH/Região (25%)</strong>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: FORÇAS E OPORTUNIDADES -->
+    <section id="oportunidades" class="section opportunities">
+        <div class="container">
+            <div class="section-content">
+                <div class="text-center mb-4">
+                    <h2>🚀 FORÇAS E OPORTUNIDADES IDENTIFICADAS</h2>
+                    <p>Análise SWOT Digital baseada na nossa experiência pastoral</p>
+                </div>
+                
+                <div class="opportunities-grid">
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">💪</div>
+                        <h4 class="opportunity-title">FORÇAS ATUAIS</h4>
+                        <ul class="opportunity-list">
+                            <li><span class="highlight">Pe. Fernando: Autoridade em Comunicação</span> - Vigário Episcopal para Comunicação da Arquidiocese</li>
+                            <li><span class="highlight">Diretor da Rede Catedral</span> - TV Horizonte, Rádio América e Cultura</li>
+                            <li><span class="highlight">Base fiel consolidada</span> - 11K seguidores engajados na Novena</li>
+                            <li><span class="highlight">Localização privilegiada</span> - Praça Carlos Chagas, Santo Agostinho</li>
+                            <li><span class="highlight">Múltiplas celebrações diárias</span> - Rico calendário litúrgico</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">📈</div>
+                        <h4 class="opportunity-title">OPORTUNIDADES DE CRESCIMENTO</h4>
+                        <ul class="opportunity-list">
+                            <li><span class="highlight">Tendência de Padres Influenciadores</span> - Mercado em crescimento exponencial</li>
+                            <li><span class="highlight">Demanda por Liturgia Diária</span> - Formato de alta retenção (6-8 min)</li>
+                            <li><span class="highlight">Stories e Reels</span> - Formatos priorizados pelo algoritmo</li>
+                            <li><span class="highlight">Horário otimizado</span> - 6h e 18h (maior engajamento observado na Novena)</li>
+                            <li><span class="highlight">Cross-platform</span> - Integração Instagram/YouTube/Site</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">🎯</div>
+                        <h4 class="opportunity-title">GAPS IDENTIFICADOS</h4>
+                        <ul class="opportunity-list">
+                            <li><span class="highlight">Frequência de posting</span> - Potencial para conteúdo diário</li>
+                            <li><span class="highlight">Reels com Pe. Fernando</span> - Baixa presença em vídeo</li>
+                            <li><span class="highlight">Liturgia comentada</span> - Nicho de alta demanda identificado</li>
+                            <li><span class="highlight">Engajamento dirigido</span> - CTAs pastorais específicos</li>
+                            <li><span class="highlight">Storytelling devocional</span> - Narrativa pessoal do pároco</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">📊</div>
+                        <h4 class="opportunity-title">APRENDIZADOS DA NOVENA DE NOSSA SENHORA APARECIDA</h4>
+                        <ul class="opportunity-list">
+                            <li><span class="highlight">Engajamento máximo</span> - Durante transmissões ao vivo</li>
+                            <li><span class="highlight">Comentários de qualidade</span> - Pedidos de oração e testemunhos</li>
+                            <li><span class="highlight">Participação presencial</span> - Aumento nas missas durante a Novena</li>
+                            <li><span class="highlight">Alcance regional</span> - Fiéis de toda Grande BH participaram</li>
+                            <li><span class="highlight">Conteúdo mariano</span> - Alto compartilhamento e salvamento</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: PROPOSTA PILOTO -->
+    <section id="proposta" class="section proposal">
+        <div class="container">
+            <div class="section-content">
+                <div class="proposal-content">
+                    <div class="hero-icon">📖</div>
+                    <h2>PROPOSTA: PILOTO "LITURGIA DIÁRIA COM PE. FERNANDO"</h2>
+                    <h3>4 Semanas de Teste • Novembro 2025</h3>
+                    <p>Inspirado no sucesso da Novena de Nossa Senhora Aparecida, proponho um encontro diário breve com a Palavra para fortalecer vínculo pastoral e hábito devocional</p>
+                    
+                    <div class="proposal-features">
+                        <div class="feature-card">
+                            <div class="feature-icon">⏰</div>
+                            <h4>HORÁRIO ESTRATÉGICO</h4>
+                            <p><strong>6h00 - Manhã</strong><br>Oração inicial do dia</p>
+                            <p><strong>18h00 - Tarde</strong><br>Reflexão do dia</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🎬</div>
+                            <h4>FORMATO OTIMIZADO</h4>
+                            <p><strong>3-6 minutos</strong><br>Reels + Stories</p>
+                            <p><strong>Estrutura fixa:</strong><br>Saudação + Evangelho + Reflexão + Oração + CTA</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">📱</div>
+                            <h4>DISTRIBUIÇÃO MULTI-CANAL</h4>
+                            <p><strong>Instagram:</strong> Reel principal</p>
+                            <p><strong>Stories:</strong> Trechos + Link</p>
+                            <p><strong>YouTube:</strong> Versão completa</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <h4>MÉTRICAS PASTORAIS</h4>
+                            <p><strong>Digital:</strong> Alcance, retenção, salvamentos</p>
+                            <p><strong>Pastoral:</strong> Pedidos de oração, testemunhos, participação</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: BENCHMARK DETALHADO -->
+    <section id="benchmark" class="section benchmark">
+        <div class="container">
+            <div class="section-content">
+                <div class="text-center mb-4">
+                    <h2>📋 BENCHMARK E ANÁLISE COMPETITIVA</h2>
+                    <p>Comparação com melhores práticas do segmento religioso digital</p>
+                </div>
+                
+                <table class="benchmark-table">
+                    <thead>
+                        <tr>
+                            <th>Perfil/Métrica</th>
+                            <th>Seguidores</th>
+                            <th>Formato Principal</th>
+                            <th>Frequência</th>
+                            <th>Engajamento</th>
+                            <th>Diferencial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Perfil/Métrica"><strong>@santuariofatimabh</strong> <span class="status-badge status-excellent">NOSSO</span></td>
+                            <td data-label="Seguidores">11.000</td>
+                            <td data-label="Formato Principal">Posts + Reels</td>
+                            <td data-label="Frequência">Semanal</td>
+                            <td data-label="Engajamento">4,86%</td>
+                            <td data-label="Diferencial">Pe. Fernando + Autoridade</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Perfil/Métrica"><strong>@liturgiadiaria</strong> <span class="status-badge status-excellent">BENCHMARK</span></td>
+                            <td data-label="Seguidores">50.000+</td>
+                            <td data-label="Formato Principal">Liturgia Diária</td>
+                            <td data-label="Frequência">Diária</td>
+                            <td data-label="Engajamento">8,2%</td>
+                            <td data-label="Diferencial">Consistência + Qualidade</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Perfil/Métrica"><strong>@padreantoniofurtado</strong> <span class="status-badge status-good">REFERÊNCIA</span></td>
+                            <td data-label="Seguidores">180.000+</td>
+                            <td data-label="Formato Principal">Reels Pastoral</td>
+                            <td data-label="Frequência">Diária</td>
+                            <td data-label="Engajamento">12,5%</td>
+                            <td data-label="Diferencial">Carisma + Storytelling</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Perfil/Métrica"><strong>@santaigrejacatolica</strong> <span class="status-badge status-excellent">LÍDER</span></td>
+                            <td data-label="Seguidores">887.000+</td>
+                            <td data-label="Formato Principal">Multi-formato</td>
+                            <td data-label="Frequência">Múltipla diária</td>
+                            <td data-label="Engajamento">6,8%</td>
+                            <td data-label="Diferencial">Volume + Variedade</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Perfil/Métrica"><strong>MÉDIA SANTUÁRIOS</strong> <span class="status-badge status-needs-improvement">SETOR</span></td>
+                            <td data-label="Seguidores">5.000-15.000</td>
+                            <td data-label="Formato Principal">Posts estáticos</td>
+                            <td data-label="Frequência">Esporádica</td>
+                            <td data-label="Engajamento">2,1%</td>
+                            <td data-label="Diferencial">Localização</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div class="chart-container">
+                        <h4>🎯 Potencial de Crescimento</h4>
+                        <p><strong>Com "Liturgia Diária":</strong></p>
+                        <div style="margin: 1rem 0;">
+                            <strong>Seguidores: +40-60% em 6 meses</strong>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%"></div>
+                            </div>
+                        </div>
+                        <div style="margin: 1rem 0;">
+                            <strong>Engajamento: +80-120% em 3 meses</strong>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h4>📊 Vantagens Competitivas</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>✅ <strong>Autoridade estabelecida</strong> - Pe. Fernando já é referência</li>
+                            <li>✅ <strong>Infraestrutura pronta</strong> - Rede Catedral + Equipe</li>
+                            <li>✅ <strong>Base fiel consolidada</strong> - 11K seguidores ativos</li>
+                            <li>✅ <strong>Nicho descoberto</strong> - Poucos concorrentes diretos em BH</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: IMPLEMENTAÇÃO -->
+    <section id="implementacao" class="section implementation">
+        <div class="container">
+            <div class="section-content">
+                <div class="text-center mb-4">
+                    <h2>🚀 PLANO DE IMPLEMENTAÇÃO</h2>
+                    <p>Roadmap detalhado para o Piloto de 4 semanas</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">🎯 SEMANA 1: PREPARAÇÃO E ESTRUTURA</h3>
+                            <p><strong>Dias 1-3: Setup Técnico</strong></p>
+                            <ul>
+                                <li>Definição de roteiro padrão (2-3 templates)</li>
+                                <li>Setup de gravação (iluminação, áudio, cenário)</li>
+                                <li>Criação de identidade visual para a série</li>
+                                <li>Testes de qualidade e duração</li>
+                            </ul>
+                            <p><strong>Dias 4-7: Primeiras gravações</strong></p>
+                            <ul>
+                                <li>Gravação de 7 episódios piloto</li>
+                                <li>Edição e ajustes baseados em feedback interno</li>
+                                <li>Criação de banco de capas e elementos gráficos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">📱 SEMANA 2: LANÇAMENTO E AJUSTES</h3>
+                            <p><strong>Segunda-feira: Lançamento oficial</strong></p>
+                            <ul>
+                                <li>Publicação do primeiro "Liturgia Diária" às 6h</li>
+                                <li>Stories de apoio e direcionamento</li>
+                                <li>Monitoramento de métricas em tempo real</li>
+                                <li>Resposta ativa a comentários</li>
+                            </ul>
+                            <p><strong>Terça a Domingo: Estabelecimento da rotina</strong></p>
+                            <ul>
+                                <li>Publicação diária nos horários definidos</li>
+                                <li>Coleta de feedback da comunidade</li>
+                                <li>Ajustes de duração e formato conforme resposta</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">📊 SEMANA 3: OTIMIZAÇÃO E EXPANSÃO</h3>
+                            <p><strong>Análise de dados intermediária</strong></p>
+                            <ul>
+                                <li>Avaliação de métricas (alcance, retenção, engajamento)</li>
+                                <li>Identificação de horários e formatos de maior sucesso</li>
+                                <li>Otimização de thumbnails e primeiros 3 segundos</li>
+                                <li>Teste de CTAs diferentes</li>
+                            </ul>
+                            <p><strong>Expansão do formato</strong></p>
+                            <ul>
+                                <li>Introdução de Stories complementares</li>
+                                <li>Cross-posting para YouTube</li>
+                                <li>Integração com site oficial (embed/links)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">📈 SEMANA 4: AVALIAÇÃO E DECISÃO</h3>
+                            <p><strong>Análise completa dos resultados</strong></p>
+                            <ul>
+                                <li>Relatório detalhado de todas as métricas</li>
+                                <li>Coleta de testemunhos e feedback qualitativo</li>
+                                <li>Análise de frutos pastorais (pedidos de oração, participação)</li>
+                                <li>Comparação com métricas pré-piloto</li>
+                            </ul>
+                            <p><strong>Decisão estratégica</strong></p>
+                            <ul>
+                                <li>Apresentação dos resultados ao Pe. Fernando</li>
+                                <li>Avaliação de viabilidade para continuidade</li>
+                                <li>Planejamento de expansão (se aprovado)</li>
+                                <li>Definição de investimento em recursos/equipe</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 7: MÉTRICAS E RESULTADOS ESPERADOS -->
+    <section id="metricas" class="section metrics">
+        <div class="container">
+            <div class="section-content">
+                <div class="text-center mb-4">
+                    <h2>📊 MÉTRICAS E RESULTADOS ESPERADOS</h2>
+                    <p>KPIs digitais e pastorais para avaliação do sucesso</p>
+                </div>
+                
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="metric-value">+25%</div>
+                        <div class="metric-desc">Aumento no alcance médio por publicação</div>
+                    </div>
+                    
+                    <div class="metric-box">
+                        <div class="metric-value">6-8min</div>
+                        <div class="metric-desc">Tempo médio de retenção em vídeo</div>
+                    </div>
+                    
+                    <div class="metric-box">
+                        <div class="metric-value">15%</div>
+                        <div class="metric-desc">Taxa de salvamento esperada</div>
+                    </div>
+                    
+                    <div class="metric-box">
+                        <div class="metric-value">500+</div>
+                        <div class="metric-desc">Novos seguidores no período</div>
+                    </div>
+                    
+                    <div class="metric-box">
+                        <div class="metric-value">8%</div>
+                        <div class="metric-desc">Taxa de engajamento média</div>
+                    </div>
+                    
+                    <div class="metric-box">
+                        <div class="metric-value">50+</div>
+                        <div class="metric-desc">Pedidos de oração mensais</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="chart-container">
+                        <h4>🎯 MÉTRICAS DIGITAIS</h4>
+                        <div style="margin: 1rem 0;">
+                            <strong>Alcance por publicação:</strong>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <small>Meta: 3.500-4.000 contas alcançadas</small>
+                        </div>
+                        <div style="margin: 1rem 0;">
+                            <strong>Tempo de retenção:</strong>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%"></div>
+                            </div>
+                            <small>Meta: 75-85% do vídeo assistido</small>
+                        </div>
+                        <div style="margin: 1rem 0;">
+                            <strong>Taxa de conclusão:</strong>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 70%"></div>
+                            </div>
+                            <small>Meta: 65-75% assistem até o final</small>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h4>🙏 FRUTOS PASTORAIS</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>📿 <strong>Pedidos de oração:</strong> +40-60 por mês</li>
+                            <li>💬 <strong>Comentários significativos:</strong> 80% com conteúdo espiritual</li>
+                            <li>🤝 <strong>Novos contatos pastorais:</strong> 15-25 pessoas/mês</li>
+                            <li>⛪ <strong>Participação presencial:</strong> +10-15% em missas</li>
+                            <li>📚 <strong>Interesse em formação:</strong> 20-30 pessoas/mês</li>
+                            <li>🎯 <strong>Testemunhos:</strong> 5-8 relatos mensais</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chart-container" style="margin-top: 2rem;">
+                    <h4>📈 PROJEÇÃO DE CRESCIMENTO - 6 MESES</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div>
+                            <strong>Seguidores</strong>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                            <small>11K → 16-18K</small>
+                        </div>
+                        <div>
+                            <strong>Engajamento</strong>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%"></div>
+                            </div>
+                            <small>4,86% → 7-9%</small>
+                        </div>
+                        <div>
+                            <strong>Alcance Médio</strong>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                            <small>3K → 6-8K por post</small>
+                        </div>
+                        <div>
+                            <strong>Frequência</strong>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <small>Semanal → Diária</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: CONCLUSÃO E PRÓXIMOS PASSOS -->
+    <section class="section" style="background: var(--gradiente-mariano); color: white;">
+        <div class="container">
+            <div class="section-content">
+                <div class="text-center">
+                    <div class="hero-icon">🙏</div>
+                    <h2>CONCLUSÃO E RECOMENDAÇÕES</h2>
+                    <h3 style="margin-bottom: 2rem;">Com base na experiência da Novena de Nossa Senhora Aparecida, o momento é estratégico para implementar o "Liturgia Diária com Pe. Fernando"</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0; text-align: left;">
+                        <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 16px; backdrop-filter: blur(10px);">
+                            <h4 style="color: #9dbed9; margin-bottom: 1rem;">🎯 FATORES DE SUCESSO</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li>✅ <strong>Pe. Fernando já é autoridade reconhecida</strong> em comunicação</li>
+                                <li>✅ <strong>Base digital consolidada</strong> - 11K seguidores ativos</li>
+                                <li>✅ <strong>Infraestrutura pronta</strong> - Rede Catedral + Equipe</li>
+                                <li>✅ <strong>Timing ideal</strong> - Tendência de padres influenciadores</li>
+                                <li>✅ <strong>Demanda comprovada</strong> - Sucesso da Novena demonstrou interesse</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 16px; backdrop-filter: blur(10px);">
+                            <h4 style="color: #9dbed9; margin-bottom: 1rem;">📈 IMPACTO ESPERADO</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li>🎯 <strong>Alcance:</strong> +40-60% crescimento em 6 meses</li>
+                                <li>📱 <strong>Engajamento:</strong> Dobrar taxa atual (4,86% → 8-9%)</li>
+                                <li>⛪ <strong>Pastoral:</strong> +50 pedidos oração/mês</li>
+                                <li>👥 <strong>Comunidade:</strong> Fortalecimento do vínculo digital</li>
+                                <li>🌟 <strong>Autoridade:</strong> Pe. Fernando como referência nacional</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 16px; backdrop-filter: blur(10px); margin: 2rem 0;">
+                        <h4 style="color: #9dbed9; margin-bottom: 1rem;">🚀 PRÓXIMOS PASSOS RECOMENDADOS</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; text-align: center;">
+                            <div>
+                                <strong>IMEDIATO (Esta semana)</strong><br>
+                                ✅ Aprovação do Pe. Fernando<br>
+                                ✅ Definição da equipe<br>
+                                ✅ Setup técnico inicial
+                            </div>
+                            <div>
+                                <strong>SEMANA 1</strong><br>
+                                📝 Roteiros e templates<br>
+                                🎬 Testes de gravação<br>
+                                🎨 Identidade visual
+                            </div>
+                            <div>
+                                <strong>SEMANA 2</strong><br>
+                                🚀 Lançamento oficial<br>
+                                📊 Monitoramento diário<br>
+                                💬 Engajamento ativo
+                            </div>
+                            <div>
+                                <strong>SEMANA 4</strong><br>
+                                📈 Análise completa<br>
+                                🎯 Decisão de continuidade<br>
+                                📋 Plano de expansão
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 1.2rem; margin: 2rem 0;">
+                        <strong>"A Igreja precisa estar onde as pessoas estão.<br>
+                        E hoje, elas estão no digital, buscando sentido e direção espiritual."</strong>
+                    </p>
+                    
+                    <div style="margin-top: 3rem;">
+                        <div style="font-size: 0.9rem; opacity: 0.8;">
+                            <strong>Proposta elaborada por:</strong> Roberth Naninne de Souza (Membro da PASCOM)<br>
+                            <strong>Para:</strong> Pe. Fernando Lopes e PASCOM<br>
+                            <strong>Baseada na experiência de:</strong> Novena de Nossa Senhora Aparecida<br>
+                            <strong>Data:</strong> Outubro 2025<br>
+                            <strong>Santuário Arquidiocesano Nossa Senhora de Fátima - Belo Horizonte/MG</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Loading and animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loading
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 500);
+            
+            // Animate sections on scroll
+            const sections = document.querySelectorAll('.section-content');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
